@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>{% block title %}Address Search{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    {% for license in licenses }
+        <ul>
+            <li>
+                License Number: {{ license.licensenumber }}
+            </li>
+            <li>
+                OPA Address: {{ license.opaaddress }}
+            </li>
+            <li>
+                OPA Account Number: {{ license.opaaccountnumber }}
+            </li>
+            <li>
+                Number of Units: {{ license.numberofunits }}
+            </li>
+            <li>
+                Owner Occupied: {{ license.owneroccupied }}
+            </li>
+            <li>
+                Total Fee Payments: {{ license.totalfeepayments }}
+            </li>
+        </ul>
+    {% endfor %}
+    <form action="{{ url_for('address.html', address=address) }}" method="post">
+        <div class="form-group">
+            <input type="text" name="reviewcomment">
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary">Search Addresses</button>
+        </div>
+    </form>
+{% endblock %}

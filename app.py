@@ -18,10 +18,9 @@ def address():
         error = None
         address = request.form.get('addressform')
         licenses = get_licenses(address)
-        print(licenses)
+
         if licenses is None:
             error = 'No results found for that address.'
-            print(error)
             flash(error)
             return render_template('address.html') 
         

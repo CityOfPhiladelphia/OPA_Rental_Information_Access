@@ -23,7 +23,3 @@ def get_licenses(address):
         return None
     licenses = query(opa_account_num)
     return licenses
-
-if __name__ == '__main__':
-    licenses = get_licenses('7151 GERMANTOWN AVE')
-    print(licenses)

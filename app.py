@@ -1,21 +1,30 @@
-from flask import Flask, jsonify, flash, render_template
+from flask import Flask, request, g, flash, render_template
+from db import close_db
 from auth import requires_auth
-from getlicenses import get_licenses
+from data_processing import get_licenses
 
 
 app = Flask(__name__)
+# Close the database when the app shuts down
+app.teardown_appcontext(close_db)
 
-@app.route('/address/<address>', methods=['GET'])
+@app.route('/address', methods=['GET', 'POST'])
 @requires_auth
-def address(address):
-    error = None
-    licenses = get_licenses(address)
-
-    if licenses is None:
-        error = 'Please enter a valid address.'
-        flash(error) 
+def address():
+    if request.method == 'POST':
         
-    return render_template('address.html', licenses=licenses)
+        error = None
+        address = request.form.get('addressform')
+        licenses = get_licenses(address)
+
+        if licenses is None:
+            error = 'No results found for that address.'
+            flash(error) 
+        
+        return render_template('address.html', licenses=licenses)
+    
+    return render_template('address.html')
+    
 
 if __name__ == '__main__':
     app.run(debug=True)

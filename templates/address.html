@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
 
 {% block header %}
-    <h1>{% block title %}Address Search{% endblock %}</h1>
+    <div class="text-center">{% block title %}Search Results{% endblock %}</div>
 {% endblock %}
 
 {% block content %}
-    {% for license in licenses }
+    <div class="container center-div">
+    {{ message }}
+    {% for license in licenses %}
         <ul>
             <li>
                 License Number: {{ license.licensenumber }}
@@ -27,12 +29,13 @@
             </li>
         </ul>
     {% endfor %}
-    <form action="{{ url_for('address.html', address=address) }}" method="post">
+    <form action="{{ url_for('address') }}" method="post">
         <div class="form-group">
-            <input type="text" name="reviewcomment">
+            <input type="text" name="addressform">
         </div>
         <div class="form-group">
             <button class="btn btn-primary">Search Addresses</button>
         </div>
     </form>
+    </div>
 {% endblock %}

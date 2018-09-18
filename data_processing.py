@@ -18,9 +18,9 @@ def query(opa_account_num):
     return licenses
 
 def get_licenses(address):
-    if address is None:
-        return None
     opa_account_num = get_opa_num_from_ais(address)
+    if opa_account_num is None:
+        return None
     licenses = query(opa_account_num)
     return licenses
 

@@ -3,6 +3,7 @@ A lightweight Flask application to validate paid rental license fees.
 
 ## Installation
 - Set environment variables as shown below.
+- Get the config.py file.
 - Change to the project directory and execute flask run in a command prompt/bash.
 
 ## TODO

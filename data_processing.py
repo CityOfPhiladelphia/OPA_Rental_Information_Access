@@ -3,23 +3,23 @@ from config import GATEKEEPERKEY
 from db import get_db
 from sqlalchemy import text
 
-def get_opa_num_from_ais(address):
+def get_eclipse_location_id_from_ais(address):
     r = requests.get(f'https://api.phila.gov/ais/v1/search/{address}?gatekeeperKey={GATEKEEPERKEY}').json()
     try:
-        opa_account_num = r['features'][0]['properties']['opa_account_num']
-        return opa_account_num
+        eclipse_location_id = r['features'][0]['properties']['eclipse_location_id']
+        return eclipse_location_id
     except:
         return None
 
-def query(opa_account_num):
+def query(eclipse_location_id):
     db = get_db()
-    sql = f"SELECT * FROM rental_payments_opa_mvw WHERE opaaccountnumber LIKE '{opa_account_num}'"
+    sql = f"SELECT * FROM rental_payments_opa_mvw WHERE eclipse_addressobjectid LIKE '{eclipse_location_id}'"
     licenses = db.engine.execute(text(sql)).fetchall()
     return licenses
 
 def get_licenses(address):
-    opa_account_num = get_opa_num_from_ais(address)
-    if opa_account_num is None:
+    eclipse_location_id = get_eclipse_location_id_from_ais(address)
+    if eclipse_location_id is None:
         return None
-    licenses = query(opa_account_num)
+    licenses = query(eclipse_location_id)
     return licenses

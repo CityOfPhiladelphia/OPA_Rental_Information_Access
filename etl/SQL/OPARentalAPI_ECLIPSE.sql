@@ -1,9 +1,10 @@
-SELECT
+SELECT DISTINCT
     l.licensenumber,
     p.opafulladdress opaaddress,
     p.opaaccountnumber,
     l.numberofunits,
     l.owneroccupied,
+    b.ADDRESSOBJECTID as ECLIPSE_ADDRESSOBJECTID,
     SUM(fee.paymenttotal) totalfeepayments
 FROM
     query.o_fn_fee fee,
@@ -26,5 +27,6 @@ GROUP BY
     l.licensenumber,
     p.opaaccountnumber,
     p.opafulladdress,
+    b.ADDRESSOBJECTID,
     l.numberofunits,
-    l.owneroccupied;
+    l.owneroccupied

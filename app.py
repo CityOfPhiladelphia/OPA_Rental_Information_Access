@@ -20,7 +20,14 @@ def address(path):
         
         error = None
         address = request.form.get('addressform')
-        licenses = get_licenses(address)
+
+        # Flash a message when AIS breaks
+        try:
+            licenses = get_licenses(address)
+        except:
+            error = 'An error has occurred. Either AIS is down or this application has encountered a bug. Please try again later or contact LIGISTeam through the link in the footer of this page.'
+            flash(error)
+            return render_template('address.html')
 
         if licenses is None:
             error = 'No results found for that address.'

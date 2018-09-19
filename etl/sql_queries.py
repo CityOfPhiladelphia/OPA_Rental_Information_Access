@@ -3,12 +3,13 @@ truncate_query = """
 """
 
 eclipse_extract = """
-    SELECT
+    SELECT DISTINCT
         l.licensenumber,
         p.opafulladdress opaaddress,
         p.opaaccountnumber,
         l.numberofunits,
         l.owneroccupied,
+        b.ADDRESSOBJECTID as ECLIPSE_ADDRESSOBJECTID,
         SUM(fee.paymenttotal) totalfeepayments
     FROM
         query.o_fn_fee fee,
@@ -31,6 +32,7 @@ eclipse_extract = """
         l.licensenumber,
         p.opaaccountnumber,
         p.opafulladdress,
+        b.ADDRESSOBJECTID,
         l.numberofunits,
         l.owneroccupied
 """
@@ -42,6 +44,7 @@ gislni_insert = """
         opaaccountnumber,
         numberofunits,
         owneroccupied,
+        eclipse_addressobjectid,
         totalfeepayments
     ) VALUES (
         :1,
@@ -49,7 +52,8 @@ gislni_insert = """
         :3,
         :4,
         :5,
-        :6
+        :6,
+        :7
     )
 """
 

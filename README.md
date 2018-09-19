@@ -1,18 +1,20 @@
 # OPA_Rental_Information_Access
 A lightweight Flask application to validate paid rental license fees.
 
+![alt text](https://github.com/CityOfPhiladelphia/OPA_Rental_Information_Access/OPA_RENTAL.png)
+
+## Project Outline
+- OPA requested an application in which they can enter an address, see associated rental licenses, if they are owner occupied, how many units they have, and how much license fees paid they have paid per rental license.
+- To create a view of rental license fees, data from various tables in ECLIPSE can be pulled. Due to long query times in ECLIPSE, data is ETL'd from ECLIPSE into a table called "rental_payments_opa_mvw" in GISLNI. This materialized view will be refreshed nightly, allowing for fast query times while using the application.
+- This Flask application allows the user to enter an address which is then passed through AIS. AIS allows the address to be standardized and matched to data in "rental_payments_opa_mvw". This data is then queried and served to the client in the form of a table.
+
 ## Installation
+- git clone https://github.com/CityOfPhiladelphia/OPA_Rental_Information_Access
+- cd to OPA_Rental_Information_Access
+- Install requirements via pip install -r requirements.txt
 - Set environment variables as shown below.
 - Get the config.py file.
-- Change to the project directory and execute flask run in a command prompt/bash.
-
-## TODO
-- Update etl/etl.py to bring in LI_ADDRESS_KEY then update getdata.py to query based on that. Currently the query is based around OPA_ACCOUNT_NUMBER and some instances of OPA_ACCOUNT_NUMBER in ECLIPSE do not seem to match up with what is spit back from AIS
-- Make requirements.txt file
-- Set scheduled etl process on a VM
-- Make a front end
-  - Make the front end responsive
-- Make all routes other than "/address" reroute to "/address"
+- Start the application by typing "flask run" in a command prompt/bash.
 
 ## File structure
 ```
@@ -35,5 +37,3 @@ db.py
 | Variable     | Value                       | Description                                      |
 | ------------ | --------------------------- | ------------------------------------------------ |
 | FLASK_APP    | app.py                      | Where the app lives                              |
-| FLASK_ENV    | development                 | Tells Flask to start app in development mode     |
-| FLASK_DEBUG  | 1                           | Activate Flask's debugger                        |

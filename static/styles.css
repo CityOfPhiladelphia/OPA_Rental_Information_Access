@@ -1,16 +1,31 @@
+#main {
+    padding: 1em;
+}
+
 .flash { 
-    margin: 1em 0; 
-    padding: 1em; 
+    width: 40%;
+    margin-left: 30%;
+    margin-right: 30%;
     background: #cae6f6; 
-    border: 1px solid #377ba8; 
+    border: 1px solid #377ba8;
 }
 
-.col-centered{
-    margin: 0 auto;
-    float: none;
+#searchbutton {
+    width: 40%;
+    margin-left: 30%;
+    margin-right: 30%;
+    padding: 1em; 
 }
 
-input[type=text], .txtarea{
-    margin-bottom: 10px;
-    
-     }
+#addressinput {
+    width: 40%;
+    margin-left: 30%;
+    margin-right: 30%;
+    padding: 1em; 
+}
+
+#addresstable {
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+}

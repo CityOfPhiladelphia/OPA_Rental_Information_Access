@@ -1,13 +1,52 @@
-{% extends 'base.html' %}
+<!doctype html>
+<html lang="en">
 
-{% block header %}
-    <div>{% block title %}{% endblock %}</div>
-{% endblock %}
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OPA Rental Lookup | City of Philadelphia</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/phila-standards@0.11.2/dist/css/phila-app.min.css">
+  <link rel="shortcut icon" type="image/x-icon" href="https://standards.phila.gov/img/favicon.png"> <meta name="twitter:card" content="summary">
+<meta property="og:title" content=""> 
+<meta property="og:description" content=""> 
+<meta property="og:type" content="website">
+<meta property="og:url" content="">
+<meta property="og:site_name" content="Digital Standards | City of Philadelphia">
+<meta property="og:image" content="https://beta.phila.gov/media/20160715133810/phila-gov.jpg">
 
-{% block content %}
-    <div class="container-fluid center-div" id="addressform"></div>
+</head>
+
+<body lang="en">
+  <div id="application">
+  <!-- Begin header -->
+  <header class="site-header app group">
+    <div class="row expanded">
+      <!-- if you don't want a full-width header, remove the expanded class -->
+      <div class="columns">
+        <a href="http://beta.phila.gov/" class="logo">
+          <img src="https://standards.phila.gov/img/logo/city-of-philadelphia-yellow-white.png" alt="City of Philadelphia">
+        </a>
+        <div class="app-divide"></div>
+        <div class="page-title-container">
+          <a href="#/">
+            <h1 class="page-title">OPA Rental Lookup</h1>
+            <h2 class="page-subtitle">For Internal Use Only</h2>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    {% for message in get_flashed_messages() %}
+        <div class="flash">{{ message }}</div>
+    {% endfor %}
+    {% block content %}
+    <div id="addressform">
         {% if licenses %}
-        <table class="table">
+        <table class="table" id="addresstable">
             <th>License Number</th>
             <th>OPA Address</th>
             <th>OPA Account Number</th>
@@ -33,7 +72,7 @@
                         {{ license.owneroccupied }}
                     </td>
                     <td>
-                        {{ license.totalfeepayments }}
+                        ${{ license.totalfeepayments }}
                     </td>
                 </tr>
             {% endfor %}
@@ -41,10 +80,33 @@
     </div>
     <form action="{{ url_for('address') }}" method="post">
         <div class="form-group">
-            <input type="text" name="addressform" placeholder="Enter an Address" class="col-lg-3">
+            <input type="text" name="addressform" placeholder="Enter an Address" id="addressinput">
         </div>
         <div class="form-group">
-            <button class="btn btn-primary col-lg-3">Search Addresses</button>
+            <button id="searchbutton">Search Addresses</button>
         </div>
     </form>
-{% endblock %}
+    {% endblock %}
+  </main>
+    <div class="app-footer anchor">
+    <!-- remove the anchor class if you want to handle footer placement yourself, otherwise it will be postion: fixed -->
+    <footer>
+      <div class="row expanded">
+        <div class="columns">
+          <nav>
+            <ul class="inline-list">
+              <li>
+                <a href="mailto:ligisteam@phila.gov">Questions? Click Here to Contact LIGISTeam</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </footer>
+  </div>
+</div>
+<!-- #application -->
+
+</body>
+
+</html>

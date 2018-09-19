@@ -10,9 +10,11 @@ app = Flask(__name__)
 app.teardown_appcontext(close_db)
 app.secret_key = SECRET_KEY
 
-@app.route('/address', methods=['GET', 'POST'])
+# Send all routes to the search page (it's the only page in this application)
+@app.route('/', defaults={'path': ''}, methods=['GET', 'POST'])
+@app.route('/<path:path>')
 @requires_auth
-def address():
+def address(path):
     if request.method == 'POST':
         
         error = None

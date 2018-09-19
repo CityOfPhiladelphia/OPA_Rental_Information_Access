@@ -27,7 +27,6 @@ static
 |   styles.css
 templates
 |   address.html
-|   base.html
 app.py
 auth.py
 data_processing.py

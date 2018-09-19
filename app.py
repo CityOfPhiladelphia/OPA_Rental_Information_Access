@@ -3,6 +3,7 @@ from config import SECRET_KEY
 from db import close_db
 from auth import requires_auth
 from data_processing import get_licenses
+from gevent.pywsgi import WSGIServer
 
 
 app = Flask(__name__)
@@ -32,4 +33,5 @@ def address(path):
     
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    http_server = WSGIServer(('0.0.0.0', 8100), app)
+    http_server.serve_forever()

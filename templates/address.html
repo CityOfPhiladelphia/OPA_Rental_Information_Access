@@ -76,12 +76,14 @@
             {% endfor %}
         </table>
     </div>
+    <h1 id ="directions">Enter an Address Below to See<br>License Payment Information</h1> 
+    <h1 id="directions"></h1>
     <form action="{{ url_for('address') }}" method="post">
         <div class="form-group">
             <input type="text" name="addressform" placeholder="Enter an Address" id="addressinput">
         </div>
         <div class="form-group">
-            <button id="searchbutton">Search Addresses</button>
+            <button id="searchbutton">Search</button>
         </div>
     </form>
     {% endblock %}

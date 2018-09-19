@@ -1,7 +1,7 @@
 # OPA_Rental_Information_Access
 A lightweight Flask application to validate paid rental license fees.
 
-![OPA_RENTAL](https://github.com/CityOfPhiladelphia/OPA_Rental_Information_Access/OPA_RENTAL.png
+![OPA_RENTAL](https://github.com/CityOfPhiladelphia/OPA_Rental_Information_Access/OPA_RENTAL.png)
 
 ## Project Outline
 - OPA requested an application in which they can enter an address, see associated rental licenses, if they are owner occupied, how many units they have, and how much license fees paid they have paid per rental license.

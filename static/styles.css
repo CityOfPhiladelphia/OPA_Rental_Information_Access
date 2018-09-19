@@ -6,6 +6,7 @@
     width: 40%;
     margin-left: 30%;
     margin-right: 30%;
+    margin-bottom: 1em;
     background: #cae6f6; 
     border: 1px solid #377ba8;
 }
@@ -14,7 +15,9 @@
     width: 40%;
     margin-left: 30%;
     margin-right: 30%;
-    padding: 1em; 
+    padding: 1em;
+    background-color: #0f4d90;
+    color: white; 
 }
 
 #addressinput {

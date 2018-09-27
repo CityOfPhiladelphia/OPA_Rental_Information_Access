@@ -12,6 +12,8 @@ A lightweight Flask application to validate paid rental license fees.
 - To create a view of rental license fees, data from various tables in ECLIPSE is pulled. Due to long query times in ECLIPSE, data is extracted from ECLIPSE, transformed into a useful format, and then loaded into a table called "rental_payments_opa_mvw" in GISLNI. This materialized view will be refreshed nightly, allowing for fast query times while using the application.
 - This Flask application allows the user to enter an address which is then passed through AIS. AIS allows the address to be standardized and matched to data in "rental_payments_opa_mvw". This data is then queried and served to the client in the form of a table.
 
+To answer the question "why wasn't this an API" - the OPA wanted something with a UI.
+
 ## Installation
 - git clone https://github.com/CityOfPhiladelphia/OPA_Rental_Information_Access
 - cd to OPA_Rental_Information_Access

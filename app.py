@@ -29,7 +29,7 @@ def address(path):
             flash(error)
             return render_template('address.html')
 
-        if licenses is None:
+        if len(licenses) == 0:
             error = 'No results found for that address.'
             flash(error)
             return render_template('address.html') 

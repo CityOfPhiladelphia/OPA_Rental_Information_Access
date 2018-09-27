@@ -28,6 +28,7 @@ eclipse_extract = """
         AND l.businessobjectid = b.objectid
         AND job.statusid LIKE '1036493'
         AND l.mostrecentissuedate BETWEEN ( job.completeddate - 2 ) AND ( job.completeddate + 2 )
+        AND p.objectid != 10898
     GROUP BY
         l.licensenumber,
         p.opaaccountnumber,

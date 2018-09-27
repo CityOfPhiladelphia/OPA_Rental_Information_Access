@@ -1,3 +1,7 @@
+#main {
+    padding: 1em;
+}
+
 .flash { 
     width: 40%;
     margin-left: 30%;
@@ -43,9 +47,4 @@
 td {
     text-align: center;
     padding: 1em; 
-}
-
-h3 {
-    text-align: center;
-    padding-bottom: 40px;
 }

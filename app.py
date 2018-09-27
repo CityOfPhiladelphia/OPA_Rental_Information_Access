@@ -29,7 +29,12 @@ def address(path):
             flash(error)
             return render_template('address.html')
 
-        if len(licenses) == 0:
+        if licenses is None:
+            error = 'Please enter a valid address.'
+            flash(error)
+            return render_template('address.html')
+
+        elif len(licenses) == 0:
             error = 'No results found for that address.'
             flash(error)
             return render_template('address.html') 

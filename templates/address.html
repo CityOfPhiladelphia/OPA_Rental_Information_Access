@@ -64,10 +64,18 @@
                         {{ license.opaaccountnumber }}
                     </td>
                     <td>
-                        {{ license.numberofunits }}
+                        {% if license.numberofunits is none %}
+                          Unknown
+                        {% else %}
+                          {{ license.numberofunits }}
+                        {% endif %}
                     </td>
                     <td>
-                        {{ license.owneroccupied }}
+                        {% if license.owneroccupied is none %}
+                          Unknown
+                        {% else %}
+                          {{ license.owneroccupied }}
+                        {% endif %}
                     </td>
                     <td>
                         ${{ license.totalfeepayments }}

@@ -1,4 +1,3 @@
-import cx_Oracle
 from li_dbs import ECLIPSE_PROD, GISLNI
 from sql_queries import truncate_query, eclipse_to_gislni_query
 
@@ -29,11 +28,11 @@ def etl(query, source_con, target_con):
     else:
         print('No data to ETL')
 
-def main():
+def truncate_and_etl():
     with ECLIPSE_PROD.ECLIPSE_PROD() as source, GISLNI.GISLNI() as target:
         truncate(truncate_query, target)
         etl(eclipse_to_gislni_query, source, target)
 
 if __name__ == '__main__':
-    main()
+    truncate_and_etl()
         

@@ -1,0 +1,1 @@
+start C:\Users\peter.dannemann\AppData\Local\Programs\Python\Python36\python.exe C:\Projects\opa_rental_information_access\etl\main.py

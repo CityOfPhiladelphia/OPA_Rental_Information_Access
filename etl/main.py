@@ -5,13 +5,13 @@ def send_email():
     from email.mime.text import MIMEText
     from phila_mail import server
 
-    recipientslist = ['peter.dannemann@Phila.gov', 
-                      'dani.interrante@phila.gov', 
+    recipientslist = ['dani.interrante@phila.gov', 
                       'philip.ribbens@phila.gov',
-                      'shannon.holm@phila.gov']
-    sender = 'peter.dannemann@phila.gov'
+                      'shannon.holm@phila.gov',
+					  'jessica.bradley@phila.gov']
+    sender = 'ligisteam@phila.gov'
     commaspace = ', '
-    email = 'RENTAL_PAYMENTS_OPA_MVW in GISLNI failed to update properly and may be missing rows or empty. Please stand by for updates.'
+    email = 'RENTAL_PAYMENTS_OPA_MVW in GISLNI failed to update properly and may be missing rows or empty. Please stand by for updates. The ETL process happens on the 131 VM.'
     text = f'AUTOMATIC EMAIL: \n {email}'
     msg = MIMEText(text)
     msg['To'] = commaspace.join(recipientslist)
